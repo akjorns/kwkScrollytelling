@@ -34,9 +34,9 @@
         width: 50%;
         background-color: #ff99fc;
         color: #007052;
-        border: solid #8427c9 3px;
+        border: solid #034c36 3px;
         border-radius: 20px;
         padding: 20px;
-        box-shadow: 16px 16px #8aa6df;
+        box-shadow: 16px 16px white;
     }
 </style>

@@ -3,7 +3,7 @@
     import "highcharts/modules/exporting";
     import { Chart } from "@highcharts/svelte";
     import Scroller from "../lib/Scroller.svelte";
-    import ArticleText from "../lib/ArticleText.svelte";
+    import ObservedArticleText from "../lib/ObservedArticleText.svelte";
 
     const series = [
         {
@@ -69,6 +69,22 @@
             thirdSeriesVisible = true;
         }
     }
+
+    // IntersectionObserver options and callback from previous snippet
+    const observerOptions = {
+        threshold: [0.85, 0.95],
+    };
+
+    const callback = (entries) => {
+        entries.forEach((entry) => {
+            const elem = entry.target;
+            if (entry.intersectionRatio >= 0.9) {
+                elem.style.backgroundColor = "#FAD9F9";
+            } else {
+                elem.style.backgroundColor = "#DAA6D3";
+            }
+        });
+    };
 </script>
 
 <div>
@@ -90,38 +106,38 @@
                     the chart. Check out the source code to see how it's done.
                 </p>
                 <p>
-                    <strong
-                        >🤔 How might you use other HTML elements, like
+                    <strong>
+                        🤔 How might you use other HTML elements, like
                         checkboxes or radio buttons, in a similar way to filter
-                        data?</strong
-                    >
+                        data?
+                    </strong>
                 </p>
             </div>
         {/snippet}
 
         {#snippet scrolly()}
-            <ArticleText>
+            <ObservedArticleText {callback} options={observerOptions}>
                 You might notice that this basic template doesn't have certain
                 features that are common in scrollytelling.
-            </ArticleText>
+            </ObservedArticleText>
 
-            <ArticleText>
+            <ObservedArticleText {callback} options={observerOptions}>
                 For example, you might want a component that doesn't feature a
                 sticky component at all. Or a component that is solely a sticky
                 component.
-            </ArticleText>
+            </ObservedArticleText>
 
-            <ArticleText>
+            <ObservedArticleText {callback} options={observerOptions}>
                 You might also want to add more interactivity or gamify parts of
                 your scrollytelling piece.
-            </ArticleText>
+            </ObservedArticleText>
 
-            <ArticleText>
+            <ObservedArticleText {callback} options={observerOptions}>
                 <strong>
                     It's up to you to research how to create the effects and
                     functionality that you envision!
                 </strong>
-            </ArticleText>
+            </ObservedArticleText>
         {/snippet}
     </Scroller>
 </div>

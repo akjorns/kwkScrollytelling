@@ -8,17 +8,12 @@
   import DisappearingDuckExample from "./sections/DisappearingDuckExample.svelte";
   import IntersectionObserverSectionCard from "./sections/IntersectionObserverSectionCard.svelte";
   import IntersectionObserverListExample from "./sections/IntersectionObserverListExample.svelte";
+  import RightTwo from "./sections/RightTwo.svelte";
 </script>
 
 <main>
   <TitleSection />
   <RightAlignedExample />
   <LeftAlignedExample />
-  <ImageExample />
-
-  <IntersectionObserverSectionCard />
-  <InteresectionObserverBasicExample />
-  <IntersectionObserverAlertExample />
-  <DisappearingDuckExample />
-  <IntersectionObserverListExample />
+  <RightTwo />
 </main>

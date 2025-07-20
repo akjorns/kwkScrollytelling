@@ -7,7 +7,7 @@
 
     let options = {
         chart: {
-            type: "pie",
+            type: "bar",
         },
         title: {
             text: "An Example Pie Chart",
