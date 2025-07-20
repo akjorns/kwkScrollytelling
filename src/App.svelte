@@ -9,11 +9,21 @@
   import IntersectionObserverSectionCard from "./sections/IntersectionObserverSectionCard.svelte";
   import IntersectionObserverListExample from "./sections/IntersectionObserverListExample.svelte";
   import RightTwo from "./sections/RightTwo.svelte";
+  import Background from "./sections/Background.svelte";
+  import Education from "./sections/Education.svelte";
+  import Job from "./sections/Job.svelte";
+  import Zoom from "./sections/Zoom.svelte";
+  import Conclusion from "./sections/Conclusion.svelte";
 </script>
 
 <main>
   <TitleSection />
+  <Background />
   <RightAlignedExample />
+  <Education />
   <LeftAlignedExample />
+  <Job />
   <RightTwo />
+  <Zoom />
+  <Conclusion />
 </main>
