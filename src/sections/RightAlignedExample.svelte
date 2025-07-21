@@ -4,52 +4,56 @@
     import { Chart } from "@highcharts/svelte";
     import Scroller from "../lib/Scroller.svelte";
     import ObservedArticleText from "../lib/ObservedArticleText.svelte";
-
-    let options = {
-        chart: {
-            type: "pie",
+let options = {
+    chart: {
+        type: "bar",
+        backgroundColor: "#FAD9F9",
+    },
+    title: {
+        text: "Percent of Poverty by Region",
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: "{point.y}",
+            },
         },
+    },
+    tooltip: {
+        formatter: function () {
+            return `<b>${this.point.name}: ${this.point.y}</b>`;
+        },
+        useHTML: true,
+    },
+    xAxis: {
+        type: "category",
         title: {
-            text: "An Example Pie Chart",
+            text: "Region",
         },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                dataLabels: [
-                    {
-                        enabled: true,
-                        distance: 20,
-                    },
-                    {
-                        enabled: true,
-                        distance: -40,
-                        format: "{point.percentage:.1f}%",
-                        style: {
-                            fontSize: "1.2em",
-                            textOutline: "none",
-                        },
-                        filter: {
-                            operator: ">",
-                            property: "percentage",
-                            value: 10,
-                        },
-                    },
-                ],
-            },
+    },
+    yAxis: {
+        title: {
+            text: "Percent",
         },
-        series: [
-            {
-                name: "Group",
-                data: [
-                    { name: "Group 1", y: 151 },
-                    { name: "Group 2", sliced: true, selected: true, y: 180 },
-                    { name: "Group 3", y: 32 },
-                    { name: "Group 4", y: 103 },
-                    { name: "Group 5", y: 77 },
-                ],
-            },
-        ],
-    };
+    },
+    legend: {
+        enabled: false,
+    },
+    series: [
+        {
+            name: null,
+            data: [
+                { name: "Deep South", y: 16, color: "#034c36" },
+                { name: "Southeast", y: 14, color: "#034c36" },
+                { name: "Northeast", y: 10.7, color: "#034c36" },
+                { name: "Midwest", y: 11.4, color: "#034c36" },
+                { name: "West", y: 11.9, color: "#034c36" },
+            ],
+        },
+    ],
+};
+
 
     // IntersectionObserver options and callback, from your second snippet
     const observerOptions = {
@@ -75,59 +79,43 @@
                 <Chart {options} highcharts={Highcharts} />
             </div>
             <p>
-                Here's an example chart using
-                <a href="https://www.highcharts.com/">Highcharts</a>!
+                For the purposes of this analysis, the five regions are defined as: 
             </p>
             <p>
-                📈 <strong>Highcharts</strong> is a super-flexible library for
-                creating all kinds of charts. See demos of different chart types
-                <a href="https://www.highcharts.com/demo">here</a>.
+                <strong>Deep South: </strong> Louisiana, Mississippi, Alabama, Georgia, South Carolina
             </p>
             <p>
-                Since we're using Highcharts through Svelte, the syntax is a
-                little different from what you might see in the demos. But all
-                of Highcharts' functionality is available through the Highcharts
-                for Svelte package.
+                <strong>Southeast: </strong> Florida, North Carolina, Tennessee, Arkansas, Kentucky, Virginia, West Virginia
             </p>
             <p>
-                The configuration is done through the
-                <code>options</code> json object passed to the chart, which you'll
-                see in the source code for this template.
+                <strong>Northeast: </strong> New York, New Jersey, Pennsylvania, Massachusetts, Connecticut, Rhode Island, Vermont, New Hampshire, Maine
             </p>
             <p>
-                Use the
-                <a href="https://api.highcharts.com/highcharts/">API reference</a>
-                to understand what each element in the <code>options</code> object
-                does.
+               <strong>Midwest: </strong> Ohio, Indiana, Illinois, Michigan, Wisconsin, Minnesota, Iowa, Missouri, Kansas, Nebraska, South Dakota, North Dakota
+            </p>
+            <p>
+               <strong>West: </strong> Texas, Oklahoma, New Mexico, Colorado, Arizona, Utah, Nevada, California, Oregon, Washington, Alaska, Hawaii, Idaho, Montana, Wyoming
             </p>
         {/snippet}
 
         {#snippet scrolly()}
             <ObservedArticleText {callback} options={observerOptions}>
-                <strong>Welcome to the KWK Data Scrollytelling Template!</strong>
+                Economic conditions vary widely across the United States, influencing the opportunities available to children in different regions.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                This is a <strong>basic example</strong> of how you might create
-                a scrollytelling piece using Svelte and Highcharts.
-            </ObservedArticleText>
-
-            <ObservedArticleText {callback} options={observerOptions}>
-                You can use this template as a <strong>starting point</strong>
-                for your project.
+                Poverty is much more prevalent in <strong>southern states</strong>. 
+                Success isn't defined by financial means, but access to resources is vital for preparing children for the future.
                 <br /><br />
-                Or, if you want to build something from scratch, you can use it as
-                a <strong>reference</strong> for specific functionality.
+                The poverty rate in <strong>Jenny’s</strong> state is 73% higher than in <strong>Grace’s</strong> state.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                This is <strong>just one way</strong> that scrollytelling can
-                look.
-                <br /><br />
-                <strong>
-                    If you use this template, be sure to modify it and make it
-                    your own!
-                </strong>
+                <strong>Northern states</strong> typically have much lower poverty rates, which often provides children greater access to opportunities that support their growth and success.
+            </ObservedArticleText>
+
+            <ObservedArticleText {callback} options={observerOptions}>
+                Addressing these regional disparities is key to ensuring all children have a fair chance to succeed, regardless of where they live.
             </ObservedArticleText>
         {/snippet}
     </Scroller>
@@ -138,4 +126,14 @@
         width: 90%;
         margin: 0px auto;
     }
+    p {
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* optional: less vertical space between paragraphs */
+}
+
+    strong {
+        color: white;
+    }
+
 </style>
