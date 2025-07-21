@@ -21,9 +21,9 @@
   <Background />
   <RightAlignedExample />
   <Education />
-  <LeftAlignedExample />
-  <Job />
   <RightTwo />
+  <Job />
+  <LeftAlignedExample />
   <Zoom />
   <Conclusion />
 </main>

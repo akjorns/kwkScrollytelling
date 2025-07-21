@@ -8,9 +8,10 @@
     let options = {
         chart: {
             type: "pie",
+            backgroundColor: "#FAD9F9",
         },
         title: {
-            text: "An Example Pie Chart",
+            text: "Regional Contribution to National Bachelor's Degree Holders",
         },
         plotOptions: {
             pie: {
@@ -39,19 +40,18 @@
         },
         series: [
             {
-                name: "Group",
+                name: "Regional Contribution to National Bachelor's Degree Holders",
                 data: [
-                    { name: "Group 1", y: 151 },
-                    { name: "Group 2", sliced: true, selected: true, y: 180 },
-                    { name: "Group 3", y: 32 },
-                    { name: "Group 4", y: 103 },
-                    { name: "Group 5", y: 77 },
+                    { name: "Deep South", y: 17.4, color: "#034c36" },
+                    { name: "Southeast", y: 18.6, color: "#0a6a4f" },
+                    { name: "Northeast", y: 23.9, color: "#023823" },
+                    { name: "Midwest", y: 19.8, color: "#016c41" },
+                    { name: "West", y: 20.3, color: "#356c59" }
                 ],
             },
         ],
     };
 
-    // IntersectionObserver options and callback, from your second snippet
     const observerOptions = {
         threshold: [0.85, 0.95],
     };
@@ -59,17 +59,13 @@
     const callback = (entries) => {
         entries.forEach((entry) => {
             const elem = entry.target;
-            if (entry.intersectionRatio >= 0.9) {
-                elem.style.backgroundColor = "#FAD9F9";
-            } else {
-                elem.style.backgroundColor = "#DAA6D3";
-            }
+            elem.style.backgroundColor = entry.intersectionRatio >= 0.9 ? "#FAD9F9" : "#DAA6D3";
         });
     };
 </script>
 
 <div>
-    <Scroller layout="right">
+    <Scroller layout="left">
         {#snippet sticky()}
             <div class="chart">
                 <Chart {options} highcharts={Highcharts} />
@@ -91,14 +87,12 @@
             </p>
             <p>
                 The configuration is done through the
-                <code>options</code> json object passed to the chart, which you'll
-                see in the source code for this template.
+                <code>options</code> json object passed to the chart.
             </p>
             <p>
                 Use the
                 <a href="https://api.highcharts.com/highcharts/">API reference</a>
-                to understand what each element in the <code>options</code> object
-                does.
+                to understand what each element in the <code>options</code> object does.
             </p>
         {/snippet}
 
@@ -113,20 +107,12 @@
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                You can use this template as a <strong>starting point</strong>
-                for your project.
-                <br /><br />
-                Or, if you want to build something from scratch, you can use it as
-                a <strong>reference</strong> for specific functionality.
+                You can use this template as a <strong>starting point</strong> for your project.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                This is <strong>just one way</strong> that scrollytelling can
-                look.
-                <br /><br />
                 <strong>
-                    If you use this template, be sure to modify it and make it
-                    your own!
+                    If you use this template, be sure to modify it and make it your own!
                 </strong>
             </ObservedArticleText>
         {/snippet}
@@ -138,4 +124,10 @@
         width: 90%;
         margin: 0px auto;
     }
+
+    :global(.wrapper.left) :global(.sticky) {
+  top: 40vh !important;
+  transform: translateY(-35%) !important;
+}
+
 </style>

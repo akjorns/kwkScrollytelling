@@ -88,7 +88,7 @@
 </script>
 
 <div>
-    <Scroller layout="left">
+    <Scroller layout="right">
         {#snippet sticky()}
             <div class="chart">
                 <Chart bind:chart {options} highcharts={Highcharts} />
