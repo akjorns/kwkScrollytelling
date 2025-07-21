@@ -44,8 +44,8 @@
     let options = {
         chart: {
             type: "spline",
-            backgroundColor: "#e3ff00",
-            borderColor: "#007052",
+            backgroundColor: "#DAA6D3",
+            borderColor: "#FAD9F9",
             borderWidth: 5,
             borderRadius: 20,
         },
@@ -151,18 +151,28 @@
     .toggle-button {
         margin: 20px;
         padding: 20px;
-        color: #007052;
-        background-color: #0bd956;
-        border: solid 2px #007052;
+        color: #DAA6D3;
+        background-color: #FAD9F9;
+        border: solid 2px #DAA6D3;
         border-radius: 16px;
         font-size: large;
         cursor: pointer;
         transition: all 0.2s ease;
-        box-shadow: 0 4px 0 #007052;
+        box-shadow: 0 4px 0 #DAA6D3;
     }
 
     .toggle-button:active {
         transform: translateY(2px);
-        box-shadow: 0 2px 0 #007052;
+        box-shadow: 0 2px 0 #DAA6D3;
+    }
+
+     p {
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* optional: less vertical space between paragraphs */
+}
+
+    strong {
+        color: white;
     }
 </style>

@@ -15,31 +15,40 @@
   let charactersRef;
   let containerRef;
 
-  // Store the natural top offset of the container
+  // Store the top offset of the scene container
+  let sceneTop = 0;
   let naturalTop = 0;
 
   // Handle scroll event, update states
   const onScroll = () => {
     scrollY = window.scrollY;
 
-    if (containerRef && !sticky) {
+    if (containerRef) {
       const rect = containerRef.getBoundingClientRect();
-      naturalTop = rect.top + scrollY;
+      sceneTop = rect.top + scrollY;
     }
 
-    sticky = scrollY >= 500 && scrollY < 1000;
-    jennyActive = sticky && scrollY >= 600 && scrollY < 800;
-    graceActive = sticky && scrollY >= 800 && scrollY < 1000;
+    // Activate sticky based on scene's top position
+    sticky = scrollY >= sceneTop && scrollY < sceneTop + 500;
+
+    // Activate Jenny dialog between +100 and +300 px within sticky
+    jennyActive = sticky && scrollY >= sceneTop + 100 && scrollY < sceneTop + 300;
+
+    // Activate Grace dialog between +300 and +500 px within sticky
+    graceActive = sticky && scrollY >= sceneTop + 300 && scrollY < sceneTop + 500;
   };
 
   // Setup scroll listener and initial measurements
   onMount(() => {
     if (containerRef) {
       const rect = containerRef.getBoundingClientRect();
-      naturalTop = rect.top + window.scrollY;
+      sceneTop = rect.top + window.scrollY;
+      naturalTop = sceneTop;
     }
+
     window.addEventListener('scroll', onScroll);
     onScroll();
+
     return () => window.removeEventListener('scroll', onScroll);
   });
 </script>
@@ -140,9 +149,7 @@
       <div class="character-box {jennyActive ? 'active' : ''}">
         <pre>
                                                                                                             
-                                                                                                    
-                                                                                                    
-                                            @@@@  @       @@@@@@@                                   
+                                         @@@@  @       @@@@@@@                                   
                                        #@*=@@@@                  @@@@                               
                                      @@  @@@      @@@@@@@@ @@@      @@@@                            
                                    %#  @@    @@@@          @@@@ @@@@   @@@                          
@@ -193,11 +200,12 @@
                @@@       @@   @@                                    @@   @     @@@                  
               @           @    @@                                  @@    @         @@               
                                  @@                               @                   @             
-                                   @                                                                                                                                 
+                                   @                                                                                 
+                                                                                                                          
         </pre>
         <div><strong>Jenny</strong></div>
         {#if jennyActive}
-          <div class="dialog">Meet Jenny. She is from Mississippi.</div>
+          <div class="dialog">Jenny goes to her local public school.</div>
         {/if}
       </div>
 
@@ -205,6 +213,7 @@
       <div class="character-box {graceActive ? 'active' : ''}">
         <pre>
                                                                                                                 
+                                                                                                                 
                                                                                                     
                                                                                                     
                                              @@@@     @@@@@                                         
@@ -257,12 +266,12 @@
               @@          @                 @@@@@@@@@@@@#                 @@          @@            
               @           @                                               @            @            
                                                                                                     
-                                                                                                    
+                                                                                                                                                    
                                                                                                     
         </pre>
         <div><strong>Grace</strong></div>
         {#if graceActive}
-          <div class="dialog">Grace is from Massachusetts.</div>
+          <div class="dialog">So does Grace.</div>
         {/if}
       </div>
     </div>

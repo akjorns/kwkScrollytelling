@@ -71,49 +71,33 @@
                 <Chart {options} highcharts={Highcharts} />
             </div>
             <p>
-                Here's an example chart using
-                <a href="https://www.highcharts.com/">Highcharts</a>!
+                This data was pulled from the Black Wealth Data Center as well as the US Census
             </p>
             <p>
-                📈 <strong>Highcharts</strong> is a super-flexible library for
-                creating all kinds of charts. See demos of different chart types
-                <a href="https://www.highcharts.com/demo">here</a>.
+                The percent of people over the age of 25 with a bachelor's degree or higher was obtained
             </p>
             <p>
-                Since we're using Highcharts through Svelte, the syntax is a
-                little different from what you might see in the demos. But all
-                of Highcharts' functionality is available through the Highcharts
-                for Svelte package.
-            </p>
-            <p>
-                The configuration is done through the
-                <code>options</code> json object passed to the chart.
-            </p>
-            <p>
-                Use the
-                <a href="https://api.highcharts.com/highcharts/">API reference</a>
-                to understand what each element in the <code>options</code> object does.
+                It was then calculated how much per region they are contributing to the national average
             </p>
         {/snippet}
 
         {#snippet scrolly()}
             <ObservedArticleText {callback} options={observerOptions}>
-                <strong>Welcome to the KWK Data Scrollytelling Template!</strong>
+                The Deep South and Southeast, which include many of the most historically marginalized states, are showing proficiency rates below 27%. That means fewer than 1 in 4 to 1 in 3 eighth graders in these regions can read at a level considered “proficient” by national standards.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                This is a <strong>basic example</strong> of how you might create
-                a scrollytelling piece using Svelte and Highcharts.
+                Compare that to the Northeast, where 1 in 3 or more students are meeting or exceeding proficiency. The gap is 7 percentage points between the Deep South and Northeast. That might not sound big, but in education data, that’s a huge performance divide affecting millions of kids.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                You can use this template as a <strong>starting point</strong> for your project.
+                And the fact that national scores have stagnated—or in some cases declined—only sharpens the urgency.
+
+If you're building a project or story around this, this disparity is a powerful anchor point. It’s not just about test scores—it’s about which children are systematically being left behind and why.
             </ObservedArticleText>
 
             <ObservedArticleText {callback} options={observerOptions}>
-                <strong>
-                    If you use this template, be sure to modify it and make it your own!
-                </strong>
+                That means that only about 1 in 3 eighth graders in the best-performing region are reading at a level the National Assessment of Educational Progress (NAEP) defines as "proficient" — which itself is not an elite benchmark, but a solid, grade-level competency.
             </ObservedArticleText>
         {/snippet}
     </Scroller>
@@ -126,8 +110,18 @@
     }
 
     :global(.wrapper.left) :global(.sticky) {
-  top: 40vh !important;
+  top: 35vh !important;
   transform: translateY(-35%) !important;
+    }
+
+     p {
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* optional: less vertical space between paragraphs */
 }
+
+    strong {
+        color: white;
+    }
 
 </style>
